@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    <body>
+
+
+        <div>
+
+            <select>
+                {% for p in preset %}
+                <option value="{{ p }}">{{ p }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <form action="" method="post">
+        {{ form.csrf_token }}
+
+            <div class="container">
+                <div class="">
+                    
+                    <!--  VOLUME   -->
+                    <div class="col-lg-2">
+                        <div class="col-lg-2">
+                            <p class="ms-4">Volume</p>
+                            {{ form.volume(className='volumeSlider',id='volume',min="0", max=".1", step=".001", value="preset.volume")}}
+                        </div>
+                        
+                        <!--  OCTAVE   -->
+                        <div class="col-lg-2">
+                            <p class="ms-4 mt-2">+ OCTAVE -</p>
+                            {{ form.octave(className='octSlider',id='oct',min="0", max="2", step="1", value="preset.octave")}}
+                        </div>
+                        <div class="col-lg-2">
+                            <!-- ATTACK -->
+                            <p class="ms-4 mt-2">ATTACK</p>
+                            {{ form.attack(className='attackSlider',id='attk',min=".001", max=".5", step="0.001", value="preset.attack")}}
+                        </div>
+                        <!-- DECAY -->
+                        <div class="col-lg-2">
+                            <p class="ms-4 mt-2">DECAY</p>
+                            {{ form.decay(className='decaySlider',id='dcay',min=".001", max=".3", step="0.01", value="preset.decay")}}
+                        </div>
+                        <!-- SUSTAIN -->
+                        <div class="col-lg-2">
+                            <p class="ms-4 mt-2">SUSTAIN</p>
+                            {{ form.sustain(className='sustainSlider',id='sus',min="400", max="200000", step="1", value="preset.sustain")}}
+                        </div>
+                        <!-- RELEASE -->
+                        <div class="col-lg-2">
+                            <p class="ms-4 mt-2">RELEASE</p>
+                            {{ form.release(className='releaseSlider',id='reles',min="0.5", max="2.5", step="0.01", value="preset.release")}}
+                        </div>
+                        <div class="col-lg-2">
+                            <!-- THIS IS WAVEFORM SLIDER -->
+                            <p class="ms-4 mt-2">WAVEFORM</p>
+                            {{ form.waveforms(className='waveSlider',min="0", max=".75", step="0.25", value="preset.waveforms")}}
+                    </div>
+                </div>
+            </div>
+            {{ form.save(class="btn btn-success")}}
+            {{ form.apply(class="btn btn-success")}}
+            {{ form.delete(class="btn btn-success")}}
+
+    </form>
+
+
+
+       
+        <!-- <button id="save" type="button" class="btn btn-success">Save</button>
+        <button id="apply"type="button" class="btn btn-success">Apply</button>
+        <button id="delete"type="button" class="btn btn-success">Delete</button> -->
+
+
+
+         <!-- KEYBOARD AND NOTES -->
+        <ul id="keyboard">
+            <li note="C" class="white">A</li>
+            <li note="C#" class="black">W</li>
+            <li note="D" class="white offset">S</li>
+            <li note="D#" class="black">E</li>
+            <li note="E" class="white offset">D</li>
+            <li note="F" class="white">F</li>
+            <li note="F#" class="black">T</li>
+            <li note="G" class="white offset">G</li>
+            <li note="G#" class="black">Y</li>
+            <li note="A" class="white offset">H</li>
+            <li note="A#" class="black">U</li>
+            <li note="B" class="white offset">J</li>
+            <li note="C2" class="white">K</li>
+            <li note="C#2" class="black">O</li>
+            <li note="D2" class="white offset">L</li>
+            <li note="D#2" class="black">P</li>
+            <li note="E2" class="white offset">;</li>
+        </ul>
+
+          <!-- PRESETS -->
+        
+
+       
+
+
+          
+          
+          
+          
+          
+          
+          
+          
+          <!--    THE COULDN'T GET TO BIN OR SPOT IF YOUR STICKLER    -->
+          
+          <!-- LFO -->
+          <!-- <label for="hz">Hz</label>
+          <input className="hz" id="hz" type="range" min="660" max="1320" value="880" step="1" />
+          <label for="lfo">LFO</label>cl
+          <input className="lfo" id="lfo" type="range" min="1" max="10" value="5" step=".1" /> -->
+          <!-- <p class="ms-4">LFO </p>
+          <input className="frequencySlider" type="range" min="0" max="1" step=".1" value=".5">   -->
+
+
+        <!-- FILTERS -->
+        <!-- <p class="ms-4">Filter (Bandpass)</p>
+        <input className="frequencySlider" type="range" min="0" max=".99" step=".0001" value=".5">
+        
+        <p class="ms-4">Q filter</p>
+        <input className="qSlider" type="range" min="0.001" max=".3" step=".001" value="0.001"> -->
+
+
+        {% endblock content %}
+    </body>
+</html>
